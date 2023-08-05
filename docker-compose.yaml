@@ -13,16 +13,20 @@ services:
       db:
         condition: service_healthy
     command: ["./wait-for-it.sh", "db:3306", "--", "flask", "run", "--host=0.0.0.0", "--port=8080"]
-
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
   db:
     build:
       context: ./db
       args:
         MYSQL_VERSION: 8.0
-        MYSQL_USER: posterr_service
-        MYSQL_PASSWORD: password
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: posterr_service
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: posterr_db
     ports:
       - "3306:3306"
@@ -34,6 +38,7 @@ services:
       interval: 5s
       timeout: 1s
       retries: 10
+
 
 volumes:
   data:

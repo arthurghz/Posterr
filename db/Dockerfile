@@ -4,8 +4,8 @@ FROM mysql:${MYSQL_VERSION}
 
 ENV MYSQL_DATABASE=posterr
 
-RUN groupadd -r posterr && useradd --no-log-init -r -g posterr_api posterr_service
+COPY ./scripts /docker-entrypoint-initdb.d/
 
-COPY --chown=posterr:posterr_api ./scripts /docker-entrypoint-initdb.d/
+RUN groupadd -r posterr && useradd --no-log-init -r -g posterr posterr_service && chown -R posterr_service:posterr /docker-entrypoint-initdb.d/
 
-USER posterr_api
+USER posterr_service
