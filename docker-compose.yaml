@@ -7,30 +7,34 @@ services:
     ports:
       - "8080:8080"
     environment:
-      FLASK_APP: src.py
-      FLASK_ENV: development
-      DATABASE_URL: mysql+pymysql://user:password@db:3306/posterr_db
+      DATABASE_URL: mysql+pymysql://posterr_service:password@db:3306/posterr_db
     working_dir: /src
     depends_on:
       db:
         condition: service_healthy
+    command: ["./wait-for-it.sh", "db:3306", "--", "flask", "run", "--host=0.0.0.0", "--port=8080"]
+
   db:
-    image: mysql:8.0
+    build:
+      context: ./db
+      args:
+        MYSQL_VERSION: 8.0
+        MYSQL_USER: posterr_service
+        MYSQL_PASSWORD: password
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: posterr_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
     ports:
       - "3306:3306"
     volumes:
       - data:/var/lib/mysql
-      - ./data/insert_records.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db/scripts:/docker-entrypoint-initdb.d
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
       interval: 5s
       timeout: 1s
       retries: 10
+
 volumes:
   data:
     driver: local
