@@ -1,0 +1,19 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+myenv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# MacOS system files
+.DS_Store
+
+# JetBrains IDE files
+.idea/
