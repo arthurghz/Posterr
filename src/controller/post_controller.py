@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Blueprint, jsonify, request
 from src.controllers.post_controller import get_post, create_post, repost_post
 

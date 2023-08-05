@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from ..models import db
 from ..models.post import Post
 from ..models.user import User

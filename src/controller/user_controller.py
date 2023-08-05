@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 from flask import Blueprint, jsonify, abort
 
-from src.controllers import get_user, get_user_posts
+from src.services import get_user, get_user_posts
 
 user_view = Blueprint('user_view', __name__)
 
