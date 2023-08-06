@@ -1,0 +1,1 @@
+GRANT ALL PRIVILEGES ON *.* TO 'posterr_service'@'%' WITH GRANT OPTION;
