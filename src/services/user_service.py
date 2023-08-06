@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from src.models.user import User
 
 
