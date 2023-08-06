@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from datetime import datetime
 from sqlalchemy.sql import text
 
@@ -21,9 +20,8 @@ class User(db.Model):
             'id': self.id,
             'username': self.username,
             'date_joined': self.date_joined.strftime('%Y-%m-%d') if self.date_joined else None,
-            'posts': [post.to_dict() for post in sorted(self.posts, key=lambda p: p.post_date, reverse=True)[:5]],
             'total_posts': len(self.posts)
         }
 
     def posts_to_dict(self):
-        return [post.to_dict() for post in sorted(self.posts, key=lambda p: p.post_date, reverse=True)]
+        return [post.to_user_posts() for post in sorted(self.posts, key=lambda p: p.datetime_creation, reverse=True)]
