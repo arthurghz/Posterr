@@ -17,6 +17,9 @@ ENV FLASK_APP=src:create_app
 ENV FLASK_ENV=development
 ENV DATABASE_URL=mysql+pymysql://posterr_service:password@db:3306/posterr_db
 
-EXPOSE 8080
+EXPOSE 8000
 
-CMD ["flask", "run", "--host=0.0.0.0", "--port=8080"]
+COPY ./start.sh .
+RUN chmod +x start.sh
+
+CMD ["./start.sh"]

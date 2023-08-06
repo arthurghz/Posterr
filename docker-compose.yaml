@@ -5,14 +5,16 @@ services:
     volumes:
       - .:/src
     ports:
-      - "8080:8080"
+      - "8000:8000"
     environment:
       DATABASE_URL: mysql+pymysql://posterr_service:password@db:3306/posterr_db
+      FLASK_ENV: production
+      APP_PORT: 8000
     working_dir: /src
     depends_on:
       db:
         condition: service_healthy
-    command: ["./wait-for-it.sh", "db:3306", "--", "flask", "run", "--host=0.0.0.0", "--port=8080"]
+    command: ["./start.sh"]
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 30s
