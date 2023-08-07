@@ -16,7 +16,7 @@ For running the service without Docker, you will need:
 1. **Starting the Application:** Utilize the following command to run the application:
 
 ```
-make run-app
+make run
 ```
 
 2. **Executing Unit Tests:** The following commands are used to install the necessary tools and run the unit tests:

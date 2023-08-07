@@ -181,6 +181,37 @@
           }
         }
       },
+      "/posts/quote": {
+        "post": {
+          "summary": "Repost a post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "original_post_id": {
+                      "type": "integer"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "quote_text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["original_post_id", "quote_text", "username"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Post reposted successfully"
+            }
+          }
+        }
+      },
       "/posts/repost/{id}": {
         "delete": {
           "summary": "Delete a repost",

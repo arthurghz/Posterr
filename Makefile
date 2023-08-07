@@ -6,6 +6,7 @@ run: run-app
 run-app:
 	@echo "Starting the application..."
 	docker-compose up -d
+	sleep 3
 	@echo "Application is up and running!"
 
 finish-app:
@@ -27,7 +28,8 @@ install:
 
 clean:
 	@echo "Cleaning up temporary files..."
-	rm -rf __pycache__  # Remove Python
+	rm -rf __pycache__
+	docker rmi -f $(docker images -a -q)
 
 run-only-app-local:
 	export FLASK_APP=src:create_app && flask run --port=8000

@@ -10,7 +10,8 @@ def get_post(id):
 
 def create_post(data):
     user = User.query.filter_by(username=data['username']).first()
-
+    if user is None:
+        raise Exception('User not found')
     now = datetime.now()
 
     start_of_day = datetime(now.year, now.month, now.day)
@@ -30,7 +31,8 @@ def create_post(data):
 
 def repost_post(data):
     user = User.query.filter_by(username=data['username']).first()
-
+    if user is None:
+        raise Exception('User not found')
     original_post = Post.query.get(data['original_post_id'])
 
     now = datetime.now()
@@ -56,7 +58,8 @@ def repost_post(data):
 
 def quote_post(data):
     user = User.query.filter_by(username=data['username']).first()
-
+    if user is None:
+        raise Exception('User not found')
 
     now = datetime.now()
     original_post = Post.query.filter_by(id=data["original_post_id"]).first()
