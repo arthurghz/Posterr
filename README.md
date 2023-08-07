@@ -40,9 +40,9 @@ If you'd rather view the documentation offline, you can find it in the `docs` fo
 
 1. **Current State and Potential Enhancements:** If provided with additional time, the areas of focus would be setting up a separate testing environment and implementing integration tests and request mocks to improve the quality of tests. Emphasis would also be placed on unit testing to verify the functionality of individual code segments.
 
-2. **Scaling Strategy:** To ensure independent scalability, the application could be divided into microservices. Specifically, separate services for /post and /request endpoints could be developed.
+2. **Scaling Strategy:** To ensure independent scalability, the application could be divided into microservices. Specifically, separate services for /post and /post/repost,  endpoints could be developed.
 
-3. **Potential Bottlenecks:** As the project scales, potential points of failure could be the database and the web server, as these areas commonly become bottlenecks.
+3. **Potential Bottlenecks:** As the project scales, potential points of failure could be the database and the web server, as these areas commonly become bottlenecks. So add more workers in webserver and deploy in an cloud solution
 
 4. **Real Life Scaling:** In a real-life scenario, a microservices-based architecture would be adopted to allow different components of the system to scale independently. Other considerations for scalability would include database optimization, load balancing, the use of caching to boost response times, and the implementation of auto-scaling to adjust server numbers based on load. Message queues for asynchronous processing would also be implemented to increase system reliability. The specific application of these strategies would be dependent on the project's unique requirements.
 
