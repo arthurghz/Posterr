@@ -47,7 +47,7 @@ If you'd rather view the documentation offline, you can find it in the `docs` fo
 4. **Real Life Scaling:** In a real-life scenario, a microservices-based architecture would be adopted to allow different components of the system to scale independently. Other considerations for scalability would include database optimization, load balancing, the use of caching to boost response times, and the implementation of auto-scaling to adjust server numbers based on load. Message queues for asynchronous processing would also be implemented to increase system reliability. The specific application of these strategies would be dependent on the project's unique requirements.
 
 ### Future Refactoring and Improvement:
-
+- **OO** : If I had more time, I would have developed the code using object-oriented programming. This would have potentially provided greater reusability and efficiency. For example, I could have created a class called 'Post Manager' to manage operations related to posts."
 - **Error Handling:** Develop a robust error handling mechanism.
 
 - **Testing:** Implement more unit, integration, and stress tests to enhance application reliability.
