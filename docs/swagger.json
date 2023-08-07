@@ -141,7 +141,7 @@
                       "type": "string"
                     }
                   },
-                  "required": ["1"]
+                  "required": ["username","text"]
                 }
               }
             }
