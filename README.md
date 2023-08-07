@@ -58,6 +58,6 @@ If you'd rather view the documentation offline, you can find it in the `docs` fo
 
 - **System Caching:** Implement system caching to improve performance.
 
-- **Worker Quantity:** Increase the number of workers to enhance the application's processing power.
+- **Worker Quantity:** Increase the number of workers to enhance the apwplication's processing power.
 
 In conclusion, a thorough analysis of the application revealed several areas for improvement and potential modifications, including the implementation of a caching system, cloud deployment for load balancing, and improvements to the gunicorn server. These enhancements will significantly increase the efficiency and reliability of the application.
