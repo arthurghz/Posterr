@@ -1,77 +1,63 @@
-# README: How to Run the Project
+Poster Projects
 
-## Steps to Run the Application:
+## Requirements
 
-1. **Installation:** To install the required libraries and dependencies, run the following command in your terminal:
+For running this application with Docker, you will need:
 
-```
-make install
-```
+- Docker version 20.10.14 (the project might work with other versions, but this one was used during development)
+- Docker Compose version 2.5.0 (the project might work with other versions, but this one was used during development)
 
-2. **Running the Application:** To run the application, use the following command:
+For running the service without Docker, you will need:
+
+- Python version 3.9.12
+
+## Running the Application
+
+1. **Starting the Application:** Utilize the following command to run the application:
 
 ```
 make run-app
 ```
 
-3. **Running Tests:** To execute the unit tests, use the following command:
+2. **Executing Unit Tests:** The following commands are used to install the necessary tools and run the unit tests:
 
 ```
+make install
 make tests
 ```
 
-## API Endpoints:
+## API Documentation
 
-The application provides several REST API endpoints that you can use to interact with the system. Here are some examples:
-
-1. **Get all posts from a specific user:**
+Once you've successfully started the app, you can access the API documentation via your browser by following this link:
 
 ```
-GET http://localhost:8080/users/user1/posts
+http://localhost:8000/api/docs
 ```
 
-The response is a JSON array containing all the posts from the user 'user1'.
-
-2. **Get a user's details:**
-
-```
-GET http://localhost:8080/users/user1
-```
-
-The response is a JSON object representing the user 'user1' and all their posts.
-
-3. **Get a specific post by ID:**
-
-```
-GET http://localhost:8080/posts/1
-```
-
-The response is a JSON object representing the post with ID 1.
-
-4. **Create a new post:**
-
-```
-curl -X POST http://localhost:8080/posts -H "Content-Type: application/json" -d '{"user_id": 1, "content": "This is a new post"}'
-```
-
-The response is a JSON object representing the newly created post.
-
-5. **Repost an existing post:**
-
-```
-curl -X POST http://localhost:8080/posts/repost -H "Content-Type: application/json" -d '{"user_id": 2, "original_post_id": 1}'
-```
-
-The response is a JSON object representing the newly created repost.
+If you'd rather view the documentation offline, you can find it in the `docs` folder.
 
 # Critique
 
-Here's the reordered content:
+1. **Current State and Potential Enhancements:** If provided with additional time, the areas of focus would be setting up a separate testing environment and implementing integration tests and request mocks to improve the quality of tests. Emphasis would also be placed on unit testing to verify the functionality of individual code segments.
 
-1. **Current State and Future Improvement**: If I had more time on this project, I would have created a separate testing environment and implemented request mocks for my tests. Additionally, I would have focused on unit testing to validate each part of the code individually.
+2. **Scaling Strategy:** To ensure independent scalability, the application could be divided into microservices. Specifically, separate services for /post and /request endpoints could be developed.
 
-2. **Scaling Approach**: I would segregate the application into microservices, one specifically for /post and another for /request, to ensure they scale independently.
+3. **Potential Bottlenecks:** As the project scales, potential points of failure could be the database and the web server, as these areas commonly become bottlenecks.
 
-3. **Potential Bottlenecks**: I believe that if the project were to scale up, the first parts to fail would likely be the database and the web server, as these are common bottlenecks.
+4. **Real Life Scaling:** In a real-life scenario, a microservices-based architecture would be adopted to allow different components of the system to scale independently. Other considerations for scalability would include database optimization, load balancing, the use of caching to boost response times, and the implementation of auto-scaling to adjust server numbers based on load. Message queues for asynchronous processing would also be implemented to increase system reliability. The specific application of these strategies would be dependent on the project's unique requirements.
 
-4. **Real Life Scaling**: To scale the product in real life, I would adopt a microservices approach, allowing different parts of the system to scale independently. I would also consider database optimization, load balancing, the use of caching to improve response times, and the implementation of auto-scaling to adjust the number of servers based on the current load. Additionally, I would use message queues for asynchronous processing to ensure the reliability of the system. All these strategies would depend on the specific needs of the project.
+### Future Refactoring and Improvement:
+
+- **Error Handling:** Develop a robust error handling mechanism.
+
+- **Testing:** Implement more unit, integration, and stress tests to enhance application reliability.
+
+- **Logging:** Incorporate a logging system and APM instrumentation for effective monitoring and troubleshooting.
+
+- **Database Optimization:** Proactively address potential database performance issues, especially as user and post count grow. Direct queries could be considered instead of an ORM.
+
+- **System Caching:** Implement system caching to improve performance.
+
+- **Worker Quantity:** Increase the number of workers to enhance the application's processing power.
+
+In conclusion, a thorough analysis of the application revealed several areas for improvement and potential modifications, including the implementation of a caching system, cloud deployment for load balancing, and improvements to the gunicorn server. These enhancements will significantly increase the efficiency and reliability of the application.

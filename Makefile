@@ -17,7 +17,6 @@ tests:
 	@echo "Running tests..."
 	pytest
 
-# Target for setting up the virtual environment
 install:
 	@echo "Setting up the virtual environment..."
 	python3 -m venv myenv
@@ -26,7 +25,9 @@ install:
 	source myenv/bin/activate && pip install -r requirements.txt
 	@echo "Dependencies installed successfully."
 
-# Target for cleaning up temporary files or compiled code
 clean:
 	@echo "Cleaning up temporary files..."
 	rm -rf __pycache__  # Remove Python
+
+run-only-app-local:
+	export FLASK_APP=src:create_app && flask run --port=8000
